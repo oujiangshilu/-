@@ -301,10 +301,65 @@ footer{
 .scene-action button{border:1px solid rgba(143,51,44,.4);background:var(--red);color:#fff7e8;padding:10px 22px;border-radius:999px;font-family:"Noto Serif SC",serif;cursor:pointer;box-shadow:0 5px 14px rgba(89,39,31,.18)}
 @media(max-width:700px){
   .scene-topbar{height:56px;padding:0 12px}.scene-brand{font-size:1rem}.scene-back{font-size:.68rem;padding:7px 10px}.scene-close{width:34px;height:34px}
-  .scene-main{width:92vw;padding:16px 0 38px}.scene-heading{margin-bottom:12px}.scene-heading h2{font-size:2.15rem}.scene-heading p{font-size:.68rem}
+  .scene-main{width:92vw;padding:0 0 38px}.scene-heading{margin-bottom:12px}.scene-heading h2{font-size:2.15rem}.scene-heading p{font-size:.68rem}
   .scene-photo{height:54vh;min-height:330px;border-width:6px}.scene-caption{left:12px;right:12px;bottom:10px;padding:10px 12px;font-size:.68rem}
   .scene-detail-wrap{grid-template-columns:1fr;gap:14px}.scene-detail-side{position:relative;top:auto}.scene-detail-side img{height:180px}.scene-detail-side .side-note{display:none}
   .scene-summary{font-size:.82rem;line-height:1.9;padding:13px}.scene-detail-tab{font-size:.7rem;padding:6px 9px}
+}
+
+/* ===== 详情页：文档式分节浏览（壹概况 · 贰诗词 · 叁美食 · 肆特产 · 伍非遗 · 陆景点） ===== */
+.scene-main.doc-mode{width:100%;margin:0;padding:0 0 60px}
+.doc-nav{
+  position:sticky;top:64px;z-index:6;
+  display:flex;justify-content:center;flex-wrap:wrap;gap:4px;
+  padding:9px 14px;background:rgba(247,240,223,.96);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(189,167,124,.55);
+}
+.doc-nav-btn{
+  font-family:"Noto Serif SC",serif;font-size:.84rem;letter-spacing:.04em;
+  padding:7px 14px;border-radius:999px;border:1px solid transparent;
+  background:none;color:var(--ink-soft);cursor:pointer;white-space:nowrap;
+  transition:.18s ease;
+}
+.doc-nav-btn .num{color:var(--red);margin-right:1px}
+.doc-nav-btn.active{background:var(--red);color:#fbeed7;font-weight:600;box-shadow:0 3px 9px rgba(89,39,31,.22)}
+.doc-nav-btn.active .num{color:#fbeed7}
+
+.ov-hero{position:relative;min-height:64vh;margin:0 0 6px;width:100%;overflow:hidden;background:#2c2015;scroll-margin-top:0}
+.ov-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.ov-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,17,10,.32) 0%,rgba(24,17,10,.62) 68%,rgba(24,17,10,.82) 100%)}
+.ov-hero.no-img{background:linear-gradient(160deg,#4a3a28,#2c2015)}
+.ov-inner{position:relative;z-index:1;min-height:64vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#f7ecd3;padding:50px 20px}
+.ov-kicker{display:flex;align-items:center;gap:12px;font-family:"Noto Sans SC",sans-serif;font-size:.72rem;letter-spacing:.32em;color:#e6d4ab}
+.ov-kicker:before,.ov-kicker:after{content:"";width:36px;height:1px;background:#c9a765}
+.ov-title{font-family:var(--brush);font-weight:400;font-size:clamp(2.6rem,8vw,4.6rem);margin:12px 0 6px;letter-spacing:.14em}
+.ov-sub{font-size:.86rem;letter-spacing:.15em;color:#e9dcc0;margin:0 0 18px}
+.ov-caption{font-family:"Noto Sans SC",sans-serif;font-size:.72rem;color:#d9c9a5;letter-spacing:.03em;margin-top:22px}
+.ov-scroll{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:7px;color:#d9c9a5;font-family:"Noto Sans SC",sans-serif;font-size:.68rem;letter-spacing:.16em;cursor:pointer;background:none;border:0}
+.ov-scroll .ring{width:22px;height:22px;border:1px solid #d9c9a5;border-radius:50%}
+
+.doc-section{width:min(1080px,94vw);margin:0 auto;padding:38px 4px 6px;scroll-margin-top:126px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(178,138,77,.42);padding-bottom:15px;margin-bottom:22px}
+.sec-head .sec-title-wrap{display:flex;align-items:baseline;gap:11px}
+.sec-head .sec-num{font-family:var(--brush);color:var(--red);font-size:2rem;line-height:1}
+.sec-head h3{margin:0;font-weight:700;font-size:1.32rem;letter-spacing:.08em;color:var(--ink)}
+.sec-head .sec-en{font-family:"Noto Sans SC",sans-serif;font-size:.66rem;letter-spacing:.24em;color:#a5906c;white-space:nowrap}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:15px}
+.card{background:#e9ddc2;border:1px solid rgba(189,167,124,.5);border-radius:11px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:7px;display:block;background:#d9c9a5}
+.card .cname{font-weight:700;font-size:.98rem;color:var(--ink)}
+.card .cdesc{font-family:"Noto Sans SC",sans-serif;font-size:.79rem;line-height:1.75;color:var(--ink-soft)}
+
+@media(max-width:700px){
+  .doc-nav{top:56px;gap:2px;padding:7px 6px}
+  .doc-nav-btn{font-size:.7rem;padding:6px 9px}
+  .ov-hero,.ov-inner{min-height:56vh}
+  .ov-title{font-size:2.5rem}
+  .doc-section{width:92vw;padding:26px 4px 4px;scroll-margin-top:104px}
+  .sec-head .sec-num{font-size:1.6rem}.sec-head h3{font-size:1.08rem}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+}
 }
 
 @media(max-width:700px){
@@ -471,7 +526,7 @@ body:before{opacity:.12}
     <div class="scene-brand">瓯江诗路</div>
     <button class="scene-close" id="sceneClose" aria-label="关闭">✕</button>
   </div>
-  <main class="scene-main" id="sceneMain"></main>
+  <main class="scene-main doc-mode" id="sceneMain"></main>
 </section>
 
 <div class="overlay" id="overlay"></div>
@@ -551,41 +606,76 @@ const SITE_DATA = [
   },
   {
     id:"fenglin", name:"枫林镇", region:"温州", type:"宗族古村类 · 千年古镇",
-    x:64, y:44, status:"draft",
-    summary:"楠溪江畔千年古镇，圣旨门楼、书院遗存与碑刻楹联层叠共存，另设二十四节气馆、数字诗路e站等现代展陈。",
+    x:64, y:44, status:"detailed",
+    heroImage:"images/fenglin-nianzuqiao.jpg", heroCaption:"枫林镇 · 念祖桥与古榕",
+    summary:"楠溪江畔千年古镇，以600米圣旨门街为中轴，明清至民国老建筑层叠；圣旨门楼、念祖桥、徐定超故居相映成趣，南拳、沙岗粉干等非遗与二十四节气“村节”让古镇文化活在日常。",
     poems:[
+      { title:"咏牡丹", author:"徐公仪", dynasty:"宋",
+        lines:["魏紫姚黄未足夸，元龙百尺有王花。", "一枝丹萼开连理，两朵红云捧日华。"] },
+      { title:"青田溪上即景", author:"徐淮", dynasty:"元",
+        lines:["夜来小雨打篷鸣，溪上风吹绿水平。", "野店梨花如雪白，客乡月明是清明。"] },
+      { title:"窑岙望枫林", author:"王光美", dynasty:"明",
+        lines:["枫色千林散绮霞，白云苍巘夕阳斜。", "枝枝叶叶迎霜赤，不减春来上苑花。"] },
       { title:"枫林遇雨行急不得见岩头诸峰", author:"陈遇春", dynasty:"清",
-        lines:["未策青藤云，枫林落叶催。","名山空结伴，骤雨失追陪。","泉响秋逾迥，岚深画未开。","幽寻不可歇，重拟拨云来。"] },
+        lines:["未策青藤云，枫林落叶催。", "名山空结伴，骤雨失追陪。", "泉响秋逾迥，岚深画未开。", "幽寻不可歇，重拟拨云来。"] },
       { title:"枫林秋景", author:"徐定超", dynasty:"清",
-        lines:["家住枫林罕见枫，晚秋闲步夕阳中。","此间好景无人识，乌桕经霜满树红。"] },
+        lines:["家住枫林罕见枫，晚秋闲步夕阳中。", "此间好景无人识，乌桕经霜满树红。"] },
       { title:"赴任", author:"徐定超", dynasty:"清",
-        lines:["江上波涛海上风，问君底事去匆匆。","旁人不识饥驱苦，双鬓依然称老翁。"],
+        lines:["江上波涛海上风，问君底事去匆匆。", "旁人不识饥驱苦，双鬓依然称老翁。"],
         note:"此诗并非直接描写枫林镇风光，但作者徐定超为永嘉枫林人，此诗属瓯江诗路宦游诗，故酌情收录。" },
-      { title:"瑶亭御风（枫林十景之一）", author:"徐象川", dynasty:"清末民初",
-        lines:["松林漠漠远山联，孤屿瑶亭叫暮猿。","再放前滩投饵去，风清露白海天浮。"] },
-      { title:"狮源曲涧（枫林十景之二）", author:"徐象川", dynasty:"清末民初",
-        lines:["萋萋芳草听啼鹃，曲涧源头酒一樽。","落落天空花径寂，月明疑是到仙源。"] },
-      { title:"草堂晚霞（枫林十景之三）", author:"徐象川", dynasty:"清末民初",
-        lines:["一林枫叶绕溪东，暮霭丹霞映水红。","共说草堂松浪好，夕阳生紫树生风。"] },
-      { title:"板桥夜月（枫林十景之四）", author:"徐象川", dynasty:"清末民初",
-        lines:["夜静风清月正明，桥横水皱唱蛙声。","行来此地心俱净，坐听啼鹃到五更。"] },
-      { title:"湖西归雁（枫林十景之五）", author:"徐象川", dynasty:"清末民初",
-        lines:["雁唤湖西落叶惊，南归惟诉北方情。","依稀霜冷秋江远，浅水芦花任宿鸣。"] },
-      { title:"象岩野渡（枫林十景之六）", author:"徐象川", dynasty:"清末民初",
-        lines:["象岩岩下一舟轻，野渡无人月自明。","新泓连涯流转急，滩头惟听打渔声。"] },
-      { title:"东岸渔舟（枫林十景之七）", author:"徐象川", dynasty:"清末民初",
-        lines:["东岸湖边托钓矶，沙明日暖脱蓑衣。","由来渔父无荣辱，一任人间是与非。"] },
-      { title:"沙堤红叶（枫林十景之八）", author:"徐象川", dynasty:"清末民初",
-        lines:["西风玉露冷沾衣，红树银蝉向晚啼。","携酒醉行图画里，双眸错认武陵溪。"] },
-      { title:"东岭松涛（枫林十景之九）", author:"徐象川", dynasty:"清末民初",
-        lines:["金风吹起客心惊，松顶声寒万籁清。","为爱岭头松浪美，岩阿常共白云行。"] }
-    ], food:[], specialty:[], heritage:[], sights:[ {name:"圣旨门楼", desc:"古镇标志性历史建筑。"} ]
+      { title:"瑶亭御风（枫林十景之一）", author:"徐济川", dynasty:"民国",
+        lines:["松林漠漠远山联，孤屿瑶亭叫暮猿。", "蒲扇拍风人欲睡，坐来别有世中天。"],
+        note:"以下十首为《枫林十景诗》，民国徐济川撰。" },
+      { title:"芳潭钓雪（枫林十景之二）", author:"徐济川", dynasty:"民国",
+        lines:["闲来负笠步溪头，下钓寒潭雪满舟。", "再放前滩投饵去，风清露白海天游。"] },
+      { title:"狮源曲涧（枫林十景之三）", author:"徐济川", dynasty:"民国",
+        lines:["萋萋芳草听啼鹃，曲涧源头酒一樽。", "落落天空花径寂，月明疑是到仙源。"] },
+      { title:"草堂晚霞（枫林十景之四）", author:"徐济川", dynasty:"民国",
+        lines:["一林枫叶绕溪东，暮霭丹霞映水红。", "共说草堂松浪好，夕阳山紫树生风。"],
+        note:"原图此处字为“暮蔼”，常见作“暮霭”，此处从常见写法。" },
+      { title:"板桥夜月（枫林十景之五）", author:"徐济川", dynasty:"民国",
+        lines:["夜静风清月正明，桥横水皱唱蛙声。", "行来此地心俱净，坐听啼鹃到五更。"] },
+      { title:"湖西归雁（枫林十景之六）", author:"徐济川", dynasty:"民国",
+        lines:["雁唳湖西落叶惊，南归惟诉北方情。", "依稀霜冷秋江远，浅水芦花任宿鸣。"] },
+      { title:"象岩野渡（枫林十景之七）", author:"徐济川", dynasty:"民国",
+        lines:["象岩岩下一舟清，野渡无人月自明。", "新涨连岩流转急，滩头惟听打鱼声。"] },
+      { title:"东岸渔舟（枫林十景之八）", author:"徐济川", dynasty:"民国",
+        lines:["东岸湖边托钓矶，沙明日暖脱蓑衣。", "由来渔父无荣辱，一任人间是与非。"] },
+      { title:"沙堤红叶（枫林十景之九）", author:"徐济川", dynasty:"民国",
+        lines:["西风玉露冷沾衣，红树银蝉向晚啼。", "携酒醉行图画里，双眸错认武陵溪。"] },
+      { title:"东岭松涛（枫林十景之十）", author:"徐济川", dynasty:"民国",
+        lines:["金风吹起客心惊，松顶声寒万籁清。", "为爱岭头松浪美，岩阿常共白云行。"] }
+    ],
+    food:[
+      { name:"沙岗粉干", desc:"楠溪八珍之一，枫林沙岗片传统特产，已有八百多年历史，宋代便誉为“食中佳品”。取上等白米，经水磨、发酵、出丝等十余道手工工序制成，细如纱线、洁白软韧；炒沙岗粉干是枫林宴客的头道主食，与鸡蛋、鱿鱼丝、卷心菜同炒，根根入味。", img:"images/fenglin-shagang-chaofengan.jpg" },
+      { name:"麦塌镬", desc:"永嘉乡间流传已久的薄饼小吃，面粉调糊在烧热的镬中摊烙，饼皮薄而韧。甜口蘸蜂蜜，咸口裹肉片、虾皮、豆腐干、粉丝等馅料煎至金黄；过去是楠溪农民农忙时的便捷口粮，兆潭村等地至今仍有邻里相聚制作的场景。", img:"images/fenglin-maitahuo.jpg" },
+      { name:"金粉饺", desc:"又称“锦粉夹”，楠溪江一带传统小吃，相传起源于南宋。芋头煮熟后与番薯粉趁热揉制，外皮琥珀色半透明、滑嫩Q弹；馅料常见猪肉、冬笋、豆腐、盘菜，形似元宝，寓意“招财纳福”，是冬至、春节和待客的常备点心。", img:"images/fenglin-jinfenjiao.jpg" },
+      { name:"永嘉麦饼", desc:"历史逾千年，相传唐代花坦朱氏先人以麦粉裹咸菜鲜肉煎烤，便于携带充饥。枫林保留小满“尝新麦饼”的习俗；饼形硕大，馅以梅干菜或咸菜配鲜肉，柴火铁镬三翻烘烤，外皮酥脆。制作技艺列入省级非遗。", img:"images/fenglin-maibing.jpg" },
+      { name:"定月馄饨", desc:"枫林百年老字号“合顺号”，因创始人徐定月得名，手艺传承五代。面皮全手工擀制，薄到清透却久煮不烂；土锅土灶柴火烹煮，汤清味鲜。老店歇业数十年后，2021年在学前巷原址重开；定月公馄饨2023年列入县级非遗名录。", img:"images/fenglin-dingyue-huntun.jpg" }
+    ],
+    specialty:[],
+    heritage:[
+      { name:"南拳（省级非遗）", desc:"2009年列入浙江省级非遗名录。枫林自宋代起有“耕读传家、习武护院”的传统，南拳风格步稳、拳刚、势烈，老中青三代传承不断。枫林镇南拳传承基地2024年获第四批县级非遗传承基地命名，徐城森为代表性传承人；每年农历二月廿二的枫林武术节是南拳最集中的展现场合。", img:"images/fenglin-nanquan.jpg" },
+      { name:"沙岗粉干制作技艺（市级非遗）", desc:"2008年列入温州市非遗名录。手工流程含浸米、水磨、压浆、煮坯、揉捣、压丝、熟化、日晒等十余道工序，改燥磨为水磨、改蒸粉为煮粉。新坊村季金星为代表性传承人，2023年镬炉村举办首届沙岗粉干美食节暨烹饪挑战赛。", img:"images/fenglin-shagang-shai.jpg" },
+      { name:"芙蓉鱼龙灯舞（市级非遗）", desc:"流传于永嘉岩头镇芙蓉古村，2023年前后列入温州市第十二批非遗名录。村落依莲花形态布局，立下“不舞龙灯、独舞鱼灯”的古训；每年正月初三至元宵，鱼灯队伍沿古村水系穿行街巷，以宝珠灯引领鱼群，变换梅花阵、连环阵逐户纳福。鱼灯以本土竹篾经七道古法工序手工扎制。", img:"images/fenglin-yudeng.jpg" },
+      { name:"永嘉金馒头（县级非遗）", desc:"县级非遗，项目分布包含枫林镇。枫林金馒头（又称金玉馒头）在圣旨门街一带的宴席中常作点心，当地“阿芳私房菜”的金玉馒头曾获“市民最喜爱的永嘉十佳美食”“永嘉十大小吃”等称号。", img:"images/fenglin-jinmantou.jpg" },
+      { name:"二十四节气“村节”", desc:"自2024年立春起，枫林以“村节”为IP，把节气食俗、武术、龙舞等非遗元素分配到全年节庆：南拳有武术节，布袋龙有文化节，粉干有美食节，金馒头、定月馄饨嵌入节气饮食与宴席传统，使非遗从展演走入街巷日常。" }
+    ],
+    sights:[
+      { name:"圣旨门街与圣旨门楼", desc:"圣旨门街是古镇的中轴线，长约600米，保留大量明清至民国老建筑。街心的圣旨门楼建于明成化年间，是宪宗为表彰乡贤徐尹沛尚义赈灾而敕建，为省级文物保护单位，也是枫林的标志性建筑。", img:"images/fenglin-shengzhimen.jpg" },
+      { name:"念祖桥", desc:"狮溪之上的石桥，1913年由徐定超捐资兴建，桥身刻有“念祖桥 京畿道监察御史里人徐定超建”等题记，桥头古榕与流水相映，是进入古镇最先遇见的历史风景。", img:"images/fenglin-nianzuqiao.jpg" },
+      { name:"徐定超故居与御史祠（徐定超纪念馆）", desc:"故居位于圣旨门街100号，是典型的楠溪江清代晚期民居。御史祠现为徐定超纪念馆，大门楹联出自蔡元培之手：“御史楼台高百尺，谏官祠宇壮千秋”，馆内陈列手稿、书信、遗物，呈现这位晚清御史的生平与风骨。" },
+      { name:"枫林里博物馆", desc:"藏于圣旨门街98号，2024年入选省级乡村博物馆，是了解枫林古镇历史与人文的一个紧凑入口。" },
+      { name:"忠孝之门", desc:"古镇街巷中的青砖门楼，门额题“忠孝之门”，两侧砌有几何纹样的砖雕花窗，工艺细致。", img:"images/fenglin-zhongxiaozhimen.jpg" }
+    ]
   },
   {
     id:"heyang", name:"鹤阳村", region:"温州", type:"宗族古村类 · 谢灵运后裔",
-    x:57, y:52, status:"draft",
-    summary:"谢灵运后裔聚居古村，祠堂、神牌、古庙楹联留存宗族诗学传承，对内认同强、对外传播相对薄弱。",
+    x:57, y:52, status:"detailed",
+    heroImage:"images/heyang-shanshui.jpg", heroCaption:"鹤阳村 · 山水风光",
+    summary:"谢灵运嫡传后裔聚居的千年诗村。公元422年谢灵运出任永嘉太守，后人于北宋初年迁居于此；谢公亭、兰玉台、环翠书院与红枫古道串成“诗学传承”研学路线，明代《鹤阳八景诗》与历代题咏留存至今。",
     poems:[
+      
       { title:"松梢月", author:"谢隽伯", dynasty:"南宋",
         lines:["银河倒泻沿苍虬，翡翠帘垂碧玉钩。","照壑骊珠浑不夜，满空笙籁欲生秋。","巢深鹤梦云花薄，影落天香露气浮。","可是诗成真是画，有人清夜倚危楼。"] },
       { title:"山茶雪", author:"谢隽伯", dynasty:"南宋",
@@ -596,8 +686,9 @@ const SITE_DATA = [
         lines:["檐压清池小院幽，绿阴啼鸟共迟留。","雨催梅绽丹腮润，鱼触萍开翠靥浮。","玩物不知人自老，哀时还与国同忧。","痴儿但喜迎宾近，拟泛蒲觞插绛榴。"] },
       { title:"玩月有感", author:"谢隽伯", dynasty:"南宋",
         lines:["人夜茶瓯若上眉，眼花推落石床棋。","举头却恨天边月，颠倒山河作树枝。"] },
-      { title:"锦屏春晖", author:"谢道宁", dynasty:"明",
-        lines:["万仞屏环仰照临，阳和随见破群阴。","岩花呈秀分高下，野树浮光间浅深。","适兴岂无人蹑屐，寻幽还有客携琴。","西郊只隔疏林外，多少红尘乱扑襟。"] },
+      { title:"锦嶂春晖", author:"谢道宁", dynasty:"明",
+        lines:["万仞屏环仰照临，阳和随见破群阴。","岩花呈秀分高下，野树浮光间浅深。","适兴岂无人蹑屐，寻幽还有客携琴。","西郊只隔疏林外，多少红尘乱扑襟。"],
+        note:"以下八首为《鹤阳八景诗》，明代谢道宁撰；“锦嶂”取自鹤阳民谚“前有锦嶂山，后有兰玉台”。" },
       { title:"玉泉夜月", author:"谢道宁", dynasty:"明",
         lines:["一轮皎皎浸沧溟，浩景玲珑上下明。","风露无声秋万顷，波涛不动夜三更。","棹从银汉光中度，人向冰壶影里行。","相去仙家应不远，寻真何必到蓬瀛。"] },
       { title:"兰台清风", author:"谢道宁", dynasty:"明",
@@ -628,13 +719,57 @@ const SITE_DATA = [
       { title:"临清楼", author:"章玄梅", dynasty:"明",
         lines:["海国分余景，江天夐小幽。","窗涵湘浦月，幔卷洞庭秋。","沙鸟晴穿户，潭鱼暖上钩。","凭栏多逸兴，缅想在瀛洲。"] },
       { title:"临清诗思", author:"吴宗孔", dynasty:"明",
-        lines:["鹤滩水自源头发，云影天光色清澈。","幽人点笔倚阑干，推敲不定成幽咽。","却羡临流诗思玄，芙蓉出水皆天然。","高楼月色相新鲜，起来策杖过前川。"] }
-    ], food:[], specialty:[], heritage:[], sights:[]
+        lines:["鹤滩水自源头发，云影天光色清澈。","幽人点笔倚阑干，推敲不定成幽咽。","却羡临流诗思玄，芙蓉出水皆天然。","高楼月色相新鲜，起来策杖过前川。"] },
+      { title:"即景", author:"谢德瑀", dynasty:"明",
+        lines:["山城雨过秋如洗，门外松筠翠作堆。", "读罢《黄庭》恣闲睡，白云时共鸟飞回。"],
+        note:"谢德瑀（1348—1420），字庭珺，号昌庵。建文中举明经不就，隐居著述，有《狂斐集》《家礼会通》《谢氏家仪》《嘉言善行录》等。" },
+      { title:"写情", author:"谢德珐", dynasty:"明",
+        lines:["轩馆幽寂事无生，景趣天然怡我情。", "满户山色白云散，数声鸟啼花雨晴。", "竹边昼静可读《易》，石上泉清堪濯缨。", "几度酒醒晓迟起，小窗一枕松风清。"],
+        note:"谢德珐（1363—1405），字庭琛。少受《春秋》于从兄昌庵，洪永间隐居不试；外孙张少师文忠公建坊表其墓。" },
+      { title:"临水书斋", author:"谢德珐", dynasty:"明",
+        lines:["碧流湛湛涵长天，小斋横枕清堪怜。", "牙签插架三万轴，灯火照窗一十年。", "长日尘埃飞不到，常时风月闲无边。", "已知圣道犹如此，乐处寻来即自然。"] },
+      { title:"锦嶂春晖（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["迟日照林林影苍，锦屏万叠罗文章。", "欻见飞乌西坠光，瞳瞳又觉来扶桑。", "丹霞照耀成五色，桃李春深自红白。", "何当驻却鲁阳戈，满眼韶华手中摘。"],
+        note:"吴宗孔，号来源，乐清人，布衣诗人。其《鹤阳八景并序》序云：八景，谢氏祖旧地也，朴轩、松坡二老尝属予赋之。" },
+      { title:"玉泉夜月（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["溪头有石如玉白，倒浸琼波几千尺。", "更有东山月色深，水明石丽光摇碧。", "素练横拖万状秋，冰轮耿耿当中流。", "移舟一棹波悠悠，惊起沙头双白鸥。"] },
+      { title:"兰台清风（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["谢氏庭前萃兰玉，万古清风镇殊俗。", "鹤山远垂奕叶光，儒采衣冠照华屋。", "筑台半月当岩楹，舞雩歌罢春风生。", "凭高一望思凭陵，旋觉两腋如怀冰。"] },
+      { title:"梅坡霁雪（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["朔风卷海吹同云，长坡积雪初迎曛。", "盘拏老梅发花萼，一枝占断罗浮春。", "丹崖月出天地白，载鹤归来岸高频。", "乘闲倚杖试荒泉，昨夜新添几盈尺？"] },
+      { title:"环翠书声（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["环中之山山色深，翠光冉冉浮轻阴。", "凭空楼阁倚林樾，碧窗了了伊吾音。", "枝头好鸟应自得，间关逸韵留清适。", "花上露痕深一滴，时是幽人读《周易》。"] },
+      { title:"井野农歌（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["井野连云云漠漠，老农荷锄事东作。", "竹杖唱罢情自怡，太平有象丰年乐。", "童孙学语未成章，倚歌相和声琅琅。", "少者褰衣大者翔，归来有酒陶一觞。"] },
+      { title:"回潭渔火（鹤阳八景并序）", author:"吴宗孔", dynasty:"明",
+        lines:["百尺澄潭转幽壑，潆洄十里盘巴曲。", "渔子张灯夜捕鱼，碧空淡淡星初落。", "移舟卖酒秋云边，清湘楚竹还堪然。", "张翰归来味正全，屈平漫赋沧浪篇。"] },
+      { title:"与谢孝子", author:"酆登", dynasty:"明",
+        lines:["秉节观风到鹤阳，谢庭兰玉有遗芳。", "一溪绿水临轩近，四面青山罨画张。", "血性从来金石感，书香不泯子孙良。", "於今圣代求忠孝，莫恋林泉老故乡。"],
+        note:"酆登，四川内江人，明弘治时任温州通判。" }
+    ],
+    food:[
+      { name:"鹤阳番薯枣", desc:"鹤阳村最具辨识度的味觉符号，已列入市级非遗。选用高糖分番薯，经蒸熟、去皮、自然晾晒多日而成，不额外加糖，金黄透亮、软糯筋道，是番薯本身的纯粹清甜。村内设有番薯枣共富工坊，是研学路线的终点站之一。", img:"images/heyang-fanshuzao.jpg" },
+      { name:"西炉柿饼（鹤盛镇域风物）", desc:"产自鹤盛镇西炉村，走深加工路线：柿子削皮、晾晒，做成甜糯的柿饼，一年鲜果与柿饼合计卖出14万斤，是鹤盛镇“一村一品”的代表。作为冬日风物，与番薯枣在季节上相呼应。", img:"images/heyang-xilu-shibing.jpg" },
+      { name:"黄精饼（永嘉非遗养生小吃）", desc:"永嘉“中国长寿之乡”康养饮食的代表，以野生黄精粉与小麦粉为主料烘烤而成。表皮金黄酥脆，内里松软有嚼劲，带奶香与麦香，并无草药味，有微甜和无糖两种口味。", img:"images/heyang-huangjingbing.jpg" }
+    ],
+    specialty:[],
+    heritage:[
+      { name:"番薯枣制作技艺（市级非遗）", desc:"已列入温州市级非遗名录（县级为第八批），核心传承地是鹤盛镇鹤阳村。选用高糖番薯，经通风阴干、削皮切条、反复蒸晒，关键在“三蒸三晒”，全程不额外加糖，甜味来自番薯自然糖化。代表性传承主体为鹤阳村谢氏农业“湖头山”品牌，产品入选“永嘉家礼”伴手礼十佳，年产值达2300万元；以“非遗工坊+共富工坊”联动周边农户，番薯枣工厂是鹤阳诗路研学的终点。", img:"images/heyang-fanshuzao.jpg" },
+      { name:"黄精饼（非遗美食）", desc:"永嘉非遗养生小吃，药食同源，以野生黄精粉与小麦粉烘烤而成，是永嘉康养饮食的代表。", img:"images/heyang-huangjingbing.jpg" }
+    ],
+    sights:[
+      { name:"兰玉台（兰玉亭）", desc:"傍村小山，山顶有平台，与鹤山共成“前屏后靠”的格局。“兰台清风”为鹤阳八景之一，亭得名于明代，谢氏族人与外地文人常在此吟诗作对。亭三面临水，内设石刻碑文，是研学路线“谢公亭—兰玉亭—环翠书院—鹤阳古道—番薯田”的核心节点。", img:"images/heyang-lanyuting.jpg" },
+      { name:"环翠书院", desc:"“环翠书声”为鹤阳八景之一，“环翠”原指明代诗人谢庭琛的书斋，书院属明代永嘉十大书院之一，是鹤阳“诗书传家”的空间缩影。今已在原脉络上建成新的环翠书院，作暑期学堂惠及村内留守儿童，也是研学路线的核心教学点。", img:"images/heyang-huancui-shuyuan.jpg" },
+      { name:"鹤阳古道（含鹤湾红枫古道）", desc:"入村及村域内的传统道路，是千年交通与耕读生活的遗存。鹤湾红枫古道不到一公里，沿途上百株枫树，秋来如火；沿路设诗牌墙绘，将祖存诗词嵌入步道，行走即读诗，兼具徒步、写生摄影与诗词场景体验。", img:"images/heyang-gudao.jpg" },
+      { name:"谢公亭", desc:"位于村口过小桥处，与谢灵运雕像一左一右相对而立。公元422年谢灵运出任永嘉太守，后人于北宋初年迁居鹤阳，村史逾千年；谢公亭为纪念山水诗鼻祖而建，是研学路线的起点，也是“中华诗村”身份最直观的宣示。", img:"images/heyang-xiegongting.jpg" },
+      { name:"兰玉台摩崖石刻与苦槠树", desc:"东山崖壁上存元代至正乙巳年（1365）谢瑀所书篆书“兰玉台”，双钩阴刻，字径约35厘米，旧时被视作“龙脉”所在；摩崖下方原为明代谢庭循临流亭（宝翰亭）故址，明宣宗曾御题《题谢庭循临流亭图》。路边三百多年的苦槠树绿荫如盖，与石刻构成村中“可触摸的时间层”。" }
+    ]
   },
   {
     id:"pengxi", name:"蓬溪村", region:"温州", type:"宗族古村类 · 谢灵运后裔",
-    x:52, y:57, status:"draft",
-    summary:"与鹤阳村同为谢灵运后裔古村，祠堂楹联、家族诗学文化在地留存明显。",
+    x:52, y:57, status:"detailed"
+    ,heroImage:"images/pengxi-jinyunshanshe.jpg", heroCaption:"蓬溪村 · 近云山舍",
+    summary:"与鹤阳村同为谢灵运后裔古村，康乐亭、谢氏大宗、近云山舍与状元街串起诗书继世的村落格局；大碏门瀑布、蓬溪糕干与鸡屎藤凉粉，则是山水与乡味的另一面。",
     poems:[
       { title:"访蓬溪村（传）", author:"朱熹（传）", dynasty:"宋",
         lines:["观鱼胜濠上，把钓超渭阳。","严子如来此，定忘富春江。"],
@@ -644,7 +779,24 @@ const SITE_DATA = [
         note:"谢选魁，字易丁，以字行，蓬溪人，1938年入延安抗大学习，毕业后加入八路军115师，解放后曾任海军福建基地政治部主任、交通部党委常委等职，著有多部电影剧本与诗集。" },
       { title:"蓬溪古村（其二）", author:"谢选魁", dynasty:"近现代",
         lines:["蓬溪古村坐南坡，卵石围墙古宅多。","宋世围墙留古迹，朱熹笔下有渔歌。"] }
-    ], food:[], specialty:[], heritage:[], sights:[]
+    ],
+    food:[
+      { name:"蓬溪糕干", desc:"永嘉蓬溪最具辨识度的传统茶食，2011年列入县级非遗。以早稻米和红糖为原料，磨粉拌糖、上笼蒸熟后切条再烘烤，既像米糕蒸熟，又如薯片烘烤，松脆而不硬，易消化、健脾胃。过年家家必备，取“年年高”的好彩头，也常作伴手礼馈赠亲友。", img:"images/pengxi-gaogan.jpg" },
+      { name:"鸡屎藤凉粉", desc:"蓬溪夏日最具反差感的乡土消暑品。鸡屎藤鲜叶揉碎后气味浓烈，经加工只留草本清冽回甘：叶捣碎取汁，与粳米粉慢煮成糊，冷却定型成透明颤动的凉粉，浸冰水、浇红糖汁、撒薄荷碎，滑溜清爽，暑气顿消。", img:"images/pengxi-jixiteng-liangfen.jpg" },
+      { name:"家烧溪鱼", desc:"楠溪江沿岸最朴素也最见功力的吃法。蓬溪溪流清澈，自生自长的溪鱼个头不大，却无泥腥、肉质细嫩。溪鱼无须刮鳞，下锅两面煎至变色，与姜葱回锅，烹料酒、加开水与酱油调味，收汁即成，表皮微焦、鱼肉雪白，配一碗素面便是山水本味。", img:"images/pengxi-jiashao-xiyu.jpg" }
+    ],
+    specialty:[],
+    heritage:[
+      { name:"蓬溪糕干制作技艺（市级非遗）", desc:"2011年列入第五批永嘉县非遗名录，2015年列入温州市第九批非遗名录。传承人周庆贵家中已有四五代传承；工序复杂，以100斤早稻米加20斤红糖计，夫妻二人日夜不停也需二十多个小时才能完成。逢年过节常买来分给孩子和乡亲。", img:"images/pengxi-gaogan-zhizuo.jpg" },
+      { name:"谢灵运传说（市级非遗）", desc:"由鹤盛镇保护，列入温州市第八批非遗名录。谢灵运任永嘉太守期间游遍山水，民间至今流传《谢公屐》《曲柄笠》《梦中授诗》《才高八斗》《谢灵运对诗鲤鱼精》等传说。他是山水诗派开创者，《登池上楼》“池塘生春草，园柳变鸣禽”千古传诵；温州现存谢灵运遗迹20余处。", img:"images/pengxi-xielingyun.jpg" }
+    ],
+    sights:[
+      { name:"康乐亭", desc:"坐落于村中几条道路交会处，是蓬溪的公共中心，也是进入古村后遇到的第一处谢灵运纪念建筑。亭建于清代，单层歇山顶，面阔三开间，中堂神龛悬谢灵运画像；谢灵运世袭康乐公，故以“康乐”为名。至今仍是村民乘凉、闲坐、聚谈的日常去处。" },
+      { name:"谢氏大宗（康乐公祠）", desc:"始建于明中叶，约九百平方米，前厅、后厅、厢廊与天井围合成保存完整的四合院；前厅设古戏台，享堂供谢灵运浮雕像，厢廊壁间嵌三十余枚取自谢灵运《山居赋》的书法碑林。2013年以“楠溪江宗祠建筑群”列入第七批全国重点文物保护单位。", img:["images/pengxi-kanglegongci.jpg", "images/pengxi-xiezongci-pai.jpg"] },
+      { name:"近云山舍与花墙", desc:"谢灵运第五十一世孙谢思泽于同治二年（1863年）所建大宅，二进二十七间、九个天井，门框嵌“忠孝持家远，诗书处世长”对联。庭院左侧花墙长8.8米、高2.65米，上嵌八十一方青砖双面雕，人物、花卉、虫鱼层层铺排，是蓬溪古民居雕刻艺术最完整的遗存。", img:["images/pengxi-jinyunshanshe.jpg", "images/pengxi-huaqiang.jpg"] },
+      { name:"大碏门瀑布", desc:"藏在村东深峡之中，落差约一百二十米，分三级跌下；丰水期水雾弥漫，晴天午后常见环形彩虹，平水期则收束为几缕银练。从村口沿溪边步道经碏门桥拾级而上，单程约二十至四十分钟，坡度平缓。", img:"images/pengxi-dakemen-pubu.jpg" },
+      { name:"状元街", desc:"因南宋李时靖的状元传说得名，全长约四十米，由二百二十六块石阶铺成，宽四点二米，两端旧设上马墩与下马墩。李时靖的状元身份正史无确载，村中仍存李氏府邸旧基，朱熹来访蓬溪的轶事也附丽于此；它把蓬溪“诗书继世”的集体记忆铺成了可以踩上去的路。", img:"images/pengxi-zhuangyuanjie.jpg" }
+    ]
   },
   {
     id:"guyanhuaxiang", name:"古堰画乡 · 通济堰", region:"丽水", type:"山水胜景类 · 水利诗文复合景观",
@@ -719,7 +871,7 @@ function renderTabContent(spot, key){
   if(!list.length) return emptyState(map[key]);
   return '<ul class="itemlist">'+list.map(i=>(
     '<li class="'+(i.img?'has-img':'')+'">'+
-      (i.img?'<img src="'+i.img+'" alt="'+i.name+'" loading="lazy">':'')+
+      (i.img?[].concat(i.img).map(u=>'<img src="'+u+'" alt="'+i.name+'" loading="lazy">').join(''):'')+
       '<div><div class="iname">'+i.name+'</div><div class="idesc">'+i.desc+'</div></div>'+
     '</li>'
   )).join("")+'</ul>';
@@ -733,8 +885,6 @@ const sceneOverlay = document.getElementById("sceneOverlay");
 const scenePage = document.getElementById("scenePage");
 const sceneMain = document.getElementById("sceneMain");
 let currentSceneSpot = null;
-let currentSceneTab = "view";
-let currentSceneDetailTab = "poems";
 
 function heroImageFor(spot){
   if(spot.heroImage) return spot.heroImage;
@@ -743,65 +893,118 @@ function heroImageFor(spot){
   return "";
 }
 
-function sceneImageHTML(spot){
-  const img = heroImageFor(spot);
-  if(img){
-    return '<img src="'+img+'" alt="'+spot.name+'风光" loading="eager">';
-  }
-  return '<div class="scene-fallback" aria-label="'+spot.name+'古风风光图占位"></div>';
+/* 文档式分节：壹概况 · 贰诗词 · 叁美食 · 肆特产 · 伍非遗 · 陆景点 */
+const DOC_SECTIONS = [
+  {key:"overview",  num:"壹", label:"概况", en:"OVERVIEW"},
+  {key:"poems",     num:"贰", label:"诗词", en:"POEMS",     head:"诗咏留题"},
+  {key:"food",      num:"叁", label:"美食", en:"FOOD",      head:"风味食单"},
+  {key:"specialty", num:"肆", label:"特产", en:"SPECIALTY", head:"风物特产"},
+  {key:"heritage",  num:"伍", label:"非遗", en:"HERITAGE",  head:"非遗技艺"},
+  {key:"sights",    num:"陆", label:"景点", en:"SIGHTS",    head:"诗境景点"}
+];
+
+function renderCardGrid(list, emptyLabel){
+  if(!list.length) return emptyState(emptyLabel);
+  return '<div class="card-grid">'+list.map(i=>(
+    '<div class="card">'+
+      (i.img?[].concat(i.img).map(u=>'<img src="'+u+'" alt="'+i.name+'" loading="lazy">').join(''):'')+
+      '<div class="cname">'+i.name+'</div>'+
+      '<div class="cdesc">'+i.desc+'</div>'+
+    '</div>'
+  )).join("")+'</div>';
 }
 
-function sceneDetailHTML(spot){
+function renderPoemsSection(spot){
+  if(!spot.poems.length) return emptyState("诗词");
+  return spot.poems.map(p=>(
+    '<div class="poem"><div class="ptitle">《'+p.title+'》</div>'+
+    '<div class="pauthor">'+p.dynasty+' · '+p.author+'</div>'+
+    '<div class="ptext">'+p.lines.map(l=>'<p>'+l+'</p>').join("")+'</div>'+
+    (p.note?'<div class="pnote">'+p.note+'</div>':'')+
+    (p.photo
+      ? '<div class="photo-slot has-photo"><img src="'+p.photo+'" alt="'+(p.photoCaption||p.title)+'" loading="lazy"><div class="pcap">'+(p.photoCaption||'今日实景')+'</div></div>'
+      : '')+
+    '</div>'
+  )).join("");
+}
+
+function docSectionBody(spot, key){
+  if(key==="poems") return renderPoemsSection(spot);
+  const map = {food:"美食",specialty:"特产",heritage:"非遗",sights:"景点"};
+  return renderCardGrid(spot[key], map[key]);
+}
+
+function renderDocNav(){
+  return '<nav class="doc-nav" id="docNav">'+DOC_SECTIONS.map(s=>(
+    '<button class="doc-nav-btn" data-doc-nav="'+s.key+'"><span class="num">'+s.num+'</span>'+s.label+'</button>'
+  )).join("")+'</nav>';
+}
+
+function renderDocBody(spot){
   const img = heroImageFor(spot);
-  const side = img
-    ? '<div class="scene-detail-side"><img src="'+img+'" alt="'+spot.name+'风光"><div class="side-note">'+(spot.heroCaption||spot.name+' · 文学景观实景')+'</div></div>'
-    : '<div class="scene-detail-side"><div class="scene-fallback" style="position:relative;height:260px" aria-label="风光图待补充"></div><div class="side-note">可在 SITE_DATA 的 heroImage 中补入该点位横版风景图。</div></div>';
-  return '<div class="scene-detail-wrap">'+side+'<div class="scene-detail-main">'+
-    '<div class="scene-summary">'+spot.summary+'</div>'+ 
-    '<div class="scene-detail-tabs" id="sceneDetailTabs">'+
-      TABS.map(t=>'<button class="scene-detail-tab'+(t.key===currentSceneDetailTab?' active':'')+'" data-detail-tab="'+t.key+'">'+t.label+'</button>').join("")+ 
-    '</div><div id="sceneDetailPanels">'+renderTabContent(spot,currentSceneDetailTab)+'</div>'+ 
-    '</div></div>';
+  const heroHTML =
+    '<div class="ov-hero'+(img?'':' no-img')+'" id="sec-overview" data-section="overview">'+
+      (img?'<img src="'+img+'" alt="'+spot.name+'风光" loading="eager">':'')+
+      '<div class="ov-inner">'+
+        '<div class="ov-kicker">'+spot.region+' · '+spot.type+'</div>'+
+        '<div class="ov-title">'+spot.name+'</div>'+
+        '<div class="ov-sub">沿江寻诗 · 以景入文 · 以文见人</div>'+
+        '<div class="ov-caption">'+(spot.heroCaption||spot.name+' · 瓯江诗路文学景观')+'</div>'+
+        '<button class="ov-scroll" id="ovScrollBtn" type="button"><span class="ring"></span><span>向下浏览</span></button>'+
+      '</div>'+
+    '</div>';
+
+  const sectionsHTML = DOC_SECTIONS.slice(1).map(sec=>(
+    '<section class="doc-section" id="sec-'+sec.key+'" data-section="'+sec.key+'">'+
+      '<div class="sec-head"><div class="sec-title-wrap"><span class="sec-num">'+sec.num+'</span><h3>'+sec.head+'</h3></div><span class="sec-en">'+sec.en+'</span></div>'+
+      '<div class="sec-body">'+docSectionBody(spot, sec.key)+'</div>'+
+    '</section>'
+  )).join("");
+
+  return heroHTML + sectionsHTML;
+}
+
+function initScrollSpy(){
+  const sections = sceneMain.querySelectorAll('[data-section]');
+  const navButtons = sceneMain.querySelectorAll('.doc-nav-btn');
+  if(!sections.length || !navButtons.length) return;
+  navButtons.forEach(b=>b.classList.toggle('active', b.dataset.docNav==='overview'));
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const key = entry.target.dataset.section;
+        navButtons.forEach(b=>b.classList.toggle('active', b.dataset.docNav===key));
+      }
+    });
+  }, {root: scenePage, rootMargin:'-130px 0px -55% 0px', threshold:0});
+  sections.forEach(s=>observer.observe(s));
 }
 
 function drawScene(){
   const spot=currentSceneSpot;
   if(!spot) return;
-  const img=heroImageFor(spot);
-  sceneMain.innerHTML =
-    '<div class="scene-heading">'+
-      '<div class="scene-kicker">'+spot.region+' · '+spot.type+'</div>'+ 
-      '<h2>'+spot.name+'</h2>'+ 
-      '<p>沿江寻诗 · 以景入文 · 以文见人</p>'+ 
-    '</div>'+ 
-    '<div class="scene-tabs">'+
-      '<button class="scene-tab '+(currentSceneTab==='view'?'active':'')+'" data-scene-tab="view">'+spot.name+'风光</button>'+ 
-      '<button class="scene-tab '+(currentSceneTab==='detail'?'active':'')+'" data-scene-tab="detail">详情介绍</button>'+ 
-    '</div>'+ 
-    '<div class="scene-view '+(currentSceneTab==='view'?'active':'')+'" id="sceneView">'+
-      '<div class="scene-photo">'+sceneImageHTML(spot)+
-        '<div class="scene-caption">'+(spot.heroCaption||spot.name+' · 瓯江诗路文学景观')+'</div>'+ 
-      '</div>'+ 
-      '<div class="scene-action"><button id="goDetail">进入文学景观详情 →</button></div>'+ 
-    '</div>'+ 
-    '<div class="scene-view '+(currentSceneTab==='detail'?'active':'')+'">'+sceneDetailHTML(spot)+'</div>';
+  sceneMain.innerHTML = renderDocNav() + renderDocBody(spot);
 
-  sceneMain.querySelectorAll('[data-scene-tab]').forEach(btn=>{
-    btn.addEventListener('click',()=>{ currentSceneTab=btn.dataset.sceneTab; drawScene(); });
+  sceneMain.querySelectorAll('[data-doc-nav]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = sceneMain.querySelector('#sec-'+btn.dataset.docNav);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
   });
-  const go=sceneMain.querySelector('#goDetail');
-  if(go) go.addEventListener('click',()=>{currentSceneTab='detail';drawScene();});
-  sceneMain.querySelectorAll('[data-detail-tab]').forEach(btn=>{
-    btn.addEventListener('click',()=>{currentSceneDetailTab=btn.dataset.detailTab;drawScene();});
+  const scrollBtn = sceneMain.querySelector('#ovScrollBtn');
+  if(scrollBtn) scrollBtn.addEventListener('click', ()=>{
+    const target = sceneMain.querySelector('#sec-poems');
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
   });
+
+  initScrollSpy();
 }
 
 function openScene(id){
   const spot=SITE_DATA.find(s=>s.id===id);
   if(!spot) return;
   currentSceneSpot=spot;
-  currentSceneTab="view";
-  currentSceneDetailTab="poems";
+  scenePage.scrollTop = 0;
   drawScene();
   sceneOverlay.classList.add('open');
   scenePage.classList.add('open');
